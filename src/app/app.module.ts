@@ -10,13 +10,22 @@ import { LobbyPage } from '../pages/lobby/lobby';
 import { QuestionPage } from '../pages/question/question';
 import { HistoryPage } from '../pages/history/history';
 import { ResultsPage } from '../pages/results/results';
+import { AppUserProvider } from '../providers/app-user/app-user';
+import { QuestionsProvider } from '../providers/questions/questions';
+import { TestResultsProvider } from '../providers/test-results/test-results';
+import { LandingPage } from '../pages/landing/landing';
+import { RegisterPage } from '../pages/register/register';
+import { LoginPage } from '../pages/login/login';
 
 let injections: any[] = [
   MyApp,
   LobbyPage,
   QuestionPage,
   HistoryPage,
-  ResultsPage
+  ResultsPage,
+  LandingPage,
+  RegisterPage,
+  LoginPage
   ]
 
 @NgModule({
@@ -30,7 +39,11 @@ let injections: any[] = [
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AppUserProvider,
+    QuestionsProvider,
+    TestResultsProvider
+
   ]
 })
 export class AppModule {}
