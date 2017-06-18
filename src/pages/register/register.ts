@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoginPage } from '../login/login';
+import { AppUserProvider } from '../../providers/app-user/app-user';
+import { QuestionPage } from '../question/question';
+import { LobbyPage } from '../lobby/lobby';
 
 /**
  * Generated class for the RegisterPage page.
@@ -13,12 +17,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user : any = {}
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public appUser: AppUserProvider
+    ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
-
+signupForm(form){
+  console.log (form);
+  if(form.invalid) {
+      return alert("Please fill in all of the required fields.");
+  } else {
+    this.navCtrl.push(LoginPage);
+  
+  }
+  this.appUser.register(this.user)
+    .map(res => res.json())
+    .subscribe(res => {
+      window.localStorage.setItem('token', res.token);
+      window.localStorage.setItem('userId', res.id);
+      this.navCtrl.setRoot(LobbyPage);
+    }, error => {
+      return alert ("Oh noes. Something went wrong! Please try again.")
+    });
+}
 }
