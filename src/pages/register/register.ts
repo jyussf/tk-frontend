@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoginPage } from '../login/login';
-import { AppUserProvider } from '../../providers/app-user/app-user';
-import { QuestionPage } from '../question/question';
 import { LobbyPage } from '../lobby/lobby';
+import { AppUserProvider } from '../../providers/app-user/app-user';
+
 
 /**
  * Generated class for the RegisterPage page.
@@ -22,8 +21,7 @@ export class RegisterPage {
     public navCtrl: NavController, 
     public navParams: NavParams, 
     public appUser: AppUserProvider
-    ) {
-  }
+    ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
@@ -32,10 +30,8 @@ signupForm(form){
   console.log (form);
   if(form.invalid) {
       return alert("Please fill in all of the required fields.");
-  } else {
-    this.navCtrl.push(LoginPage);
+  } 
   
-  }
   this.appUser.register(this.user)
     .map(res => res.json())
     .subscribe(res => {
