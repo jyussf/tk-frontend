@@ -23,4 +23,10 @@ path: string = "/AppUsers"
       newUserData
     );
   }
+   login(newUserLogin) {
+    return this.http.post(
+      this.baseUrl + this.path + "/login",
+      newUserLogin
+    );
+  }
 }

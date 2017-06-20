@@ -12,7 +12,6 @@
 
 </ion-header>
 
-
 <ion-content padding>
   <form #registerForm="ngForm" (ngSubmit)="signupForm(registerForm)" novalidate>
     <ion-item>
@@ -35,7 +34,7 @@
      
       <ion-item>
         <ion-label> Password</ion-label>
-      <ion-input name="password" type="password" placeholder="Password" [(ngModel)]="user.password" required>
+      <ion-input name="password" type="password" placeholder="*******" [(ngModel)]="user.password" required>
         
       </ion-input>
   

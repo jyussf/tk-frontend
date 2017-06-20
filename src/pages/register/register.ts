@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LobbyPage } from '../lobby/lobby';
 import { AppUserProvider } from '../../providers/app-user/app-user';
 
-
 /**
  * Generated class for the RegisterPage page.
  *

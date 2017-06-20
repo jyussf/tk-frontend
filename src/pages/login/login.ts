@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LobbyPage } from '../lobby/lobby';
+import { AppUserProvider } from '../../providers/app-user/app-user';
 
 /**
  * Generated class for the LoginPage page.
@@ -13,12 +15,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  user: any = {}
+  
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public appUser: AppUserProvider
+  ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-
+userLogin(login){
+  console.log (login);
+  if(login.invalid) {
+      return alert("Email or password is incorrect. Please try again.");
+  } 
+   this.appUser.login(this.user)
+    .map(res => res.json())
+    .subscribe(res => {
+      window.localStorage.setItem('token', res.id);
+      window.localStorage.setItem('userId', res.userId);
+      this.navCtrl.setRoot(LobbyPage);
+    }, error => {
+      return alert ("Oh noes. Something went wrong! Please try again.")
+    });
+}
 }
