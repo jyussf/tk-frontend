@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { QuestionPage } from '../question/question';
 import { HistoryPage } from '../history/history';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the LobbyPage page.
@@ -29,4 +30,9 @@ takeTest(){
   viewHistory(){
     this.navCtrl.push(HistoryPage);
   }
+   logout(){
+     this.navCtrl.push(LoginPage);
+   }
 }
+
+

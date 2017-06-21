@@ -29,4 +29,10 @@ path: string = "/AppUsers"
       newUserLogin
     );
   }
+  logout(token){
+    return this.http.post(
+      this.baseUrl + this.path + '/logout' + '?access_token=' + token, 
+      {}
+      );
+  }
 }
