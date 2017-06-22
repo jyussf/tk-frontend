@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+
+
 /*
   Generated class for the QuestionsProvider provider.
 
@@ -10,9 +12,15 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class QuestionsProvider {
+  baseUrl: string = "https://juanassf-phortonssf.c9users.io/api"
+  path: string = "/Questions"
 
-  constructor(public http: Http) {
-    console.log('Hello QuestionsProvider Provider');
+  constructor( public http: Http) {
+  } 
+ getQuestions(token){
+    return this.http.get(
+      this.baseUrl + this.path + '?access_token=' + token
+      );
   }
 
 }

@@ -31,7 +31,7 @@ takeTest(){
     this.navCtrl.push(HistoryPage);
   }
    logout(){
-     this.navCtrl.push(LoginPage);
+     this.navCtrl.setRoot(LoginPage);
    }
 }
 
